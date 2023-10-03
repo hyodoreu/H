@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>'H'의 인생</title>
+	<style type="text/css">
+		@font-face {
+	    font-family: 'DOSPilgiMedium';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/DOSPilgiMedium.woff2') format('woff2');
+	    font-weight: normal;
+	    font-style: normal;}
+	    @font-face {
+	    font-family: 'Her-Gilwonok';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_ten@1.0/Her-Gilwonok.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;}
+	   
+		body{display: block;  width:100%; height:auto; margin:0; font-family: 'DOSPilgiMedium'; position:relative; height: 100vh;}
+		.age{font-size: 100px; position:absolute; right:50px; }
+		.img{display: flex; justify-content: center; align-items: center; height: 100%;}
+		img:hover {mix-blend-mode: difference;}
+		.age:hover {mix-blend-mode: difference;}
+		.text{width:100%; font-size: 30px; position:absolute;  bottom:0px; height:auto; word-wrap: break-word; text-align: center;padding: 0 150px; box-sizing: border-box; padding-bottom:20px;}
+
+		.text:hover {mix-blend-mode: difference;}
+		#back {display: none; z-index:1000; width:100%;position:absolute; height:100vh;}
+		
+	</style>
+</head>
+<body>
+	
+	<div> <img src="https://media2.giphy.com/media/aFNOjAT27pm24/giphy.gif?cid=ecf05e47qdxn15vhlkes2rzu05s73z88znkd9rtw2fdhnndk&ep=v1_gifs_related&rid=giphy.gif&ct=g" id="back"> </div>
+	<div id="age" class="age">age</div>
+	<div id="count" class="age" style="top:100px;">0</div>
+	<div id="text" class="text"></div>
+	</div>
+	<div class="img">
+		<img id="img1" src="https://media4.giphy.com/media/hJAspGl20MXaE/giphy.gif?cid=ecf05e47a1xhhkipdr4fihzv7wvhd9niwf0h5qc9u9ccs59k&ep=v1_gifs_related&rid=giphy.gif&ct=g" style="height:500px;">
+		<img id="img2" src="2.jpg" style="height:70px; display: none; z-index:100; position:absolute;">
+	</div>
+	<audio id="babySound">
+	  <source src="baby.mp3" type="audio/mpeg">
+	</audio>
+	<audio id="boom">
+		<source src="boom.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="drop">
+	  <source src="sound.mp3" type="audio/mpeg">
+	</audio>
+	
+
+
+	<script type="text/javascript">
+
+		let Count = 0;
+		let x=0; let y=0;
+        const countDisplay = document.getElementById('count');
+        const img1 = document.getElementById('img1');
+        const img2 = document.getElementById('img2');
+        const back = document.getElementById('back');
+        const text = document.getElementById('text');
+        const body = document.body;
+        const age = document.getElementById('age');
+
+        
+
+		let manyemo = setInterval(makeemo,600);
+		makeemo(); makeemo(); makeemo(); makeemo(); makeemo(); 
+		function makeemo(){
+			let d = document.getElementById("img2");
+			d.className = "img2-clone";
+			let a = d.cloneNode(true);
+			console.log(window);
+			a.onclick = function(){this.remove();}
+			x = Math.random()*(window.innerWidth - 250);
+			y = Math.random()*(window.innerHeight - 287);
+			a.style.left = x + "px";
+			a.style.top = y + "px";
+			document.body.appendChild(a)
+
+		}
+		
+
+
+		
+
+
+        img1.addEventListener('click', function() {
+        Count++;
+        countDisplay.textContent = Count;
+
+        const darkness = (Count / 58);
+            const backgroundColor = `rgb(${Math.floor(255 - darkness * 255)}, ${Math.floor(255 - darkness * 255)}, ${Math.floor(255 - darkness * 255)}`;
+            body.style.backgroundColor = backgroundColor;
+
+        const brightness = Count / 58; 
+                const textColor = `rgb(${Math.floor(255 * brightness)}, ${Math.floor(255 * brightness)}, ${Math.floor(255 * brightness)}`;
+                text.style.color = textColor;
+                age.style.color = textColor;
+                count.style.color = textColor;
+        if (Count === 1) {
+    const babySound = document.getElementById('babySound');
+    babySound.play();
+  }
+
+      if (Count > 0 && Count < 10) {
+        img1.src = "1.jpg";
+
+        if (Count > 0 && Count < 5) {
+            text.innerHTML = "독일과 오스트리아의 접경도시인 브라우나우암인에서 한 아이가 태어났다";
+        } else if (Count >= 5 && Count < 10) {
+            text.innerHTML = "지방 세무서장인 아버지 덕에 중산층 중에서도 잘 사는 편에 속했다";
+        }
+    }
+
+    if (Count > 11 && Count < 15) {
+    	img1.src = "2.jpg";
+
+    	if (Count > 11 && Count < 13) {
+    	text.innerHTML = "비교적 우수한 성적으로 초등학교를 마치고 실업학교에 들어갔다"
+    	}
+    	else if (Count == 13) {
+            text.innerHTML = "그의 아버지가 사망했다";
+        }
+        else if (Count == 14) {
+            text.innerHTML = "그는 점점 학업에 흥미를 잃어갔다";
+        }
+        else if (Count == 15) {
+            text.innerHTML = "실업학교 중등 과정까지는 이수했으나, 고등 과정은 유급 당하다가 결국 자퇴한다";
+        }
+    }
+    if (Count == 16) {
+    	img1.src = "p1.jpg";
+    	text.innerHTML = "오스트리아-헝가리 제국의 수도였던 빈으로 무작정 상경했고, 그는 예술가를 꿈꾸었다";
+    }
+    if (Count == 17) {
+    	img1.src = "p2.jpg";
+    	text.innerHTML = "국립 미술 아카데미에 지원하지만 낙방하였다";
+    }
+    if (Count == 18) {
+    	img1.src = "대학교.jpg";
+    	text.innerHTML = "  재수까지 하였지만 또 떨어지자 직접 교장에게 찾아가서 항의했다. 교장은 그에게 건축을 권유했고 그는 굉장한 모욕을 느꼈다.";
+    }
+    if (Count > 29 ) {
+    const babySound = document.getElementById('drop');
+    drop.play();
+  }
+
+    if (Count > 29 && Count < 57) {
+        makeemo();
+        img2.src = "blood.gif";
+        img2.style.display = "block";
+    }
+
+
+    if (Count > 18 && Count < 21) {
+		img1.src = "20.jpg";
+		text.innerHTML = "중졸로 사회에 나오게 된 그는 방황하면서 어떠한 목표 없이 백수짓을 전전했다";
+    }
+    if (Count > 21 && Count < 24) {
+		img1.src = "20.jpg";
+		text.innerHTML = "빈에서 그림엽서 등을 그리며 생계를 꾸려갔는데 먹고 사는 데 큰 문제는 없을 정도로 돈을 벌었다";
+	}
+	if (Count > 24 && Count < 26) {
+		img1.src = "3.jpg";
+		text.innerHTML = " 제1차 세계 대전이 터지자 독일 제국 정부에 청원까지 하여 바이에른 왕국군에 자진입대했다";
+	}
+	if (Count > 26 && Count < 29) {
+		img1.src = "4.jpg";
+		text.innerHTML = " 그는 전투 중에 독가스를 들이마시고 일시적으로 시력을 상실하여 후방으로 이송되었다";
+	}
+	if (Count > 27 && Count < 29) {
+		text.innerHTML = " 독가스에 의해서 기관지를 손상당했기에 목소리가 변하였는데 이로 인해서 훗날 특유의 카랑카랑한 목소리로 연설할 수 있게 되었다";
+
+	}
+	if (Count > 29 && Count < 33) {
+		img1.src = "5.jpg";
+		text.innerHTML = "민족사회주의 독일 노동자당(나치당)에 입당하였다";
+
+	}
+	if (Count > 33 && Count < 36) {
+		img1.src = "6.gif";
+		text.innerHTML = "베르사유 조약에 반대하면서 발생한 뮌헨 푸츠풍쿠헨 사건에서 그는 나치당의 지도자로서 처음으로 연설을 진행하였으며, 이 사건으로 인해 그는 체포되었다";
+
+	}
+	if (Count > 36 && Count < 39) {
+		img1.src = "7.gif";
+		text.innerHTML = "그와 나치당은 독일의 정치 무대에서 강력한 존재로 부상하였으며, 그는 다양한 시위와 집회에서 연설을 통해 나치 이념을 알렸다";
+
+	}
+	if (Count > 39 && Count < 43) {
+		img1.src = "8.gif";
+		text.innerHTML = "7월 총선에서 나치당은 37.4%로 230석으로 원내 1당으로 등극했다";
+
+	}
+	if (Count == 43) {
+		img1.src = "11.gif";
+		text.innerHTML = "독일 총리로 임명되어 나치 독일의 지도자가 되었다";
+
+	}
+	if (Count > 43 && Count < 46) {
+		img1.src = "12.gif";
+		text.innerHTML = " 그가 총통에 오른지 불과 2년 만에 모든 야당은 사라졌고 당내 좌파는 박멸되었으며 반대세력은 죽거나 도망쳤고 유대인은 비국민이 되었으며 독일은 재무장을 향해 달려갔다";
+	}
+	if (Count > 46 && Count < 49) {
+		img1.src = "13.gif";
+		text.innerHTML = "나치 조직 내부의 권력 재편 착수작업을 통해 그는 절대권력을 다지게 되었다";
+	}
+	if (Count == 50) {
+		img1.src = "14.jpg";
+		text.innerHTML = "나치 독일이 1939년 9월 폴란드를 침공함과 동시에  제2차 세계 대전의 막이 오르게 된다";
+	}
+	if (Count > 51 && Count < 53) {
+		img1.src = "15.jpg";
+		text.innerHTML = "그의 지도 아래 나치 정부는 아우슈비츠와 트레블링카 등의 절멸수용소에서 유대인들은 계획적으로 학살되기에 이른다";
+	}
+	if (Count > 53 && Count < 56) {
+		img1.src = "16.jpg";
+		text.innerHTML = "독일의 패배가 점점 더 불가피해지면서, 나치 독일은 제2차 세계 대전에서 더욱 비굴한 입장을 취하였다";
+	}
+	if (Count == 56) {
+		img1.src = "9.jpg";
+		text.innerHTML = "나치 독일은 제2차 세계 대전에서 패배했고, 그는 아내와 함께 자살했다";
+		const babySound = document.getElementById('boom');
+    	boom.play();
+	}
+	if (Count > 56) {
+		age.style.display = "none";
+		count.style.display = "none";
+		img1.style.display= "none";
+		body.style.backgroundColor = "red";
+		text.innerHTML = "그는 20세기 최고의 악인 히틀러이다";
+		back.style.display = "block";
+	}
+
+});
+        	
+
+		
+  </script>
+    </script>
+</body>
+</html>
